@@ -1,27 +1,71 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-
+import utils from "@/utils/utils.js";
 Vue.use(VueRouter)
 
-  const routes = [
-  {
+const routes = [{
     path: '/',
-    name: 'Home',
-    component: Home
+    component: () => import('../views/pc/App.vue'),
+    children: [{
+      path: '/',
+      component: () => import('@/components/pc/Home.vue')
+    }, {
+      path: 'setting',
+      component: () => import('@/components/pc/Home.vue')
+    }]
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/m',
+    component: () => import('../views/mobie/App.vue'),
+    children: [{
+      path: '/',
+      component: () => import('@/components/mobie/Home')
+    }, {
+      path: 'sports',
+      component: () => import('@/components/mobie/Sports'),
+    }, {
+      path: 'dashboard',
+      component: () => import('@/components/mobie/Dashboard'),
+    }, {
+      path: 'setting',
+      component: () => import('@/components/mobie/Setting'),
+    }, {
+      path: 'news',
+      component: () => import('@/components/mobie/News'),
+    }]
+  }, {
+    path: '/login',
+    component: () => import('../views/Login.vue')
   }
 ]
 
 const router = new VueRouter({
+  mode: 'hash',
+  base: process.env.BASE_URL,
   routes
 })
+
+router.beforeEach((to, from, next) => {
+  if (utils.getCookie('token')) {
+    if (to.path == '/login') {
+      next({
+        path: from.fullPath
+      })
+    } else {
+      next();
+    }
+  } else {
+    if (to.path == '/login') {
+      next()
+    } else {
+      next({
+        path: '/login'
+      })
+    }
+
+  }
+
+
+});
 
 export default router

@@ -1,0 +1,40 @@
+{
+    "title": {
+        "text": "{title}",
+        "left": "center",
+        "bottom": 0,
+        "textStyle": {
+            "color": "#ccc",
+            "fontSize": 12
+        }
+    },
+    "series": [{
+        "type": "pie",
+        "center": ["50%", "35%"],
+        "radius": ["55%", "65%"],
+        "avoidLabelOverlap": false,
+        "data": [{
+                "value": "{value1}",
+                "label": {
+                    "show": true,
+                    "formatter": "{d}%",
+                    "fontSize": 12,
+                    "position": "center"
+                },
+                "itemStyle": {
+                    "color": "#20a53a"
+                }
+            },
+            {
+                "value": "{value2}",
+                "label": {
+                    "show": false,
+                    "position": "center"
+                },
+                "itemStyle": {
+                    "color": "#eeeeee"
+                }
+            }
+        ]
+    }]
+}

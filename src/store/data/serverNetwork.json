@@ -1,0 +1,37 @@
+{
+    "load": {
+        "max": 2,
+        "safe": 1.5,
+        "one": 0.3,
+        "five": 0.14,
+        "limit": 2,
+        "fifteen": 0.16
+    },
+    "down": 15.22,
+    "downTotal": 1895005087,
+    "version": "7.3.0",
+    "database_total": 3,
+    "title": "垃圾回收站",
+    "mem": {
+        "memFree": 113,
+        "memTotal": 1837,
+        "memCached": 943,
+        "memBuffers": 205,
+        "memRealUsed": 576
+    },
+    "up": 108.93,
+    "ftp_total": 4,
+    "upTotal": 2278856174,
+    "site_total": 8,
+    "upPackets": 2844895,
+    "time": "1天",
+    "disk": [{
+        "path": "/",
+        "size": ["50G", "7.0G", "40G", "15%"],
+        "type": "ext4",
+        "inodes": ["3276800", "112335", "3164465", "4%"],
+        "filesystem": "/dev/vda1"
+    }],
+    "downPackets": 3266726,
+    "cpu": [33.3, 1, [3.8], "AMD EPYC 7K62 48-Core Processor * 1", 1, 1]
+}
