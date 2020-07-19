@@ -61,7 +61,7 @@
 </script>
 
 <style scoped>
-    #news-hots {
+    .container {
         background-color: #fff;
     }
 

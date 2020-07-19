@@ -44,9 +44,11 @@ input {
 }
 
 .blank {
-  color: #cccccc !important;
+  color: #cccccc;
+  background-color: transparent;
   text-align: center;
   padding: 50px;
+  position: relative;
 }
 
 /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/

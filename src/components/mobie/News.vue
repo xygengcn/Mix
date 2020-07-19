@@ -6,7 +6,10 @@
                 <li @click="active ='weiboHots'" :class="{isActive:active =='weiboHots'}">热搜</li>
             </ul>
         </div>
-        <component :is="active"></component>
+        <div class="container">
+            <component :is="active"></component>
+        </div>
+
     </div>
 </template>
 
@@ -28,7 +31,13 @@
 
 <style lang="css" scoped>
     #m-news {
+        width: 100%;
         min-height: 100%;
+    }
+
+    .container {
+        min-height: 100%;
+        overflow: auto;
     }
 
     .nav {
