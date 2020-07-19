@@ -108,7 +108,7 @@
         methods: {
             func() {
                 this.interval = setInterval(() => {
-                    this.$store.dispatch("GetServerNetwork").then(() => {
+                    this.$store.dispatch("GetApi", "serverNetwork").then(() => {
                         this.option['xAxis'].data.push(utils.time(new Date(), "HH:mm:ss"));
                         this.option['series'][0].data.push(this.data.up);
                         this.option['series'][1].data.push(this.data.down);

@@ -1,7 +1,7 @@
 import axios from "axios";
 import utils from "@/utils/utils.js"
 var http = {
-    host: "http://api.cn",
+    host: "https://api.xygeng.cn",
     api: {
         "one": "/one",
         "bing": "/bing/url",

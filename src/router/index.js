@@ -11,7 +11,13 @@ const routes = [{
       component: () => import('@/components/pc/Home.vue')
     }, {
       path: 'setting',
-      component: () => import('@/components/pc/Home.vue')
+      component: () => import('@/components/pc/Setting.vue')
+    }, {
+      path: 'news',
+      component: () => import('@/components/pc/News.vue')
+    }, {
+      path: 'sports',
+      component: () => import('@/components/pc/Sports.vue')
     }]
   },
   {

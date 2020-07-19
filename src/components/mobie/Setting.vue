@@ -3,12 +3,17 @@
         <div class="container">
             <ul>
                 <li>
-                    <mt-cell title="用户" :value="user.username"></mt-cell>
+                    <mt-cell title="当前用户" :value="user.username"></mt-cell>
                 </li>
             </ul>
             <ul>
                 <li>
                     <mt-cell title="关于MIX" :value="'版本 '+system.version"></mt-cell>
+                </li>
+                <li>
+                    <mt-cell title="更新MIX">
+                        <mt-button type="primary" size="small" @click="updata()">更新</mt-button>
+                    </mt-cell>
                 </li>
             </ul>
             <ul>
@@ -37,6 +42,9 @@
                 }).catch((err) => {
                     console.log(err);
                 });
+            },
+            updata() {
+                window.location.reload(true);
             }
         },
         computed: {

@@ -6,11 +6,6 @@
                     <i slot="icon" class="el-icon-s-home"></i>首页
                 </div>
             </router-link>
-            <router-link to="/dashboard">
-                <div class="sideBtn" :class="{active:$route.path=='/dashboard'}">
-                    <i slot="icon" class="el-icon-s-marketing"></i>监控
-                </div>
-            </router-link>
             <router-link to="/news">
                 <div class="sideBtn" :class="{active:$route.path=='/news'}">
                     <i slot="icon" class="el-icon-s-order"></i>快讯

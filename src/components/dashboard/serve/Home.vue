@@ -39,7 +39,7 @@
         },
         computed: {
             data() {
-                return this.$store.state.serverNetwork;
+                return this.$store.state.apiData.serverNetwork;
             }
         },
         created() {

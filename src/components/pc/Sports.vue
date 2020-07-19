@@ -1,5 +1,5 @@
 <template>
-    <div id="m-sports">
+    <div class="sports">
         <div class="container">
             <soccer />
         </div>
@@ -17,5 +17,8 @@
 </script>
 
 <style scoped>
-
+    .container {
+        max-width: 1000px;
+        margin: 0px auto;
+    }
 </style>

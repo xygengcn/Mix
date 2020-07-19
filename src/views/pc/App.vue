@@ -38,5 +38,6 @@
     .container {
         padding: 20px;
         width: 100%;
+        overflow: auto;
     }
 </style>

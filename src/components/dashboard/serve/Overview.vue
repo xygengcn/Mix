@@ -1,5 +1,6 @@
 <template>
-    <card>
+    <card :title="true">
+        <div class="header" slot="header">网站统计</div>
         <div slot="body" class="body">
             <div class="item">
                 <p>{{data.site_total}}</p>网站

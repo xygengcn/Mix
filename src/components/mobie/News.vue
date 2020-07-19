@@ -22,11 +22,6 @@
             return {
                 active: "newsFlash"
             };
-        },
-        computed: {
-            config() {
-                return this.$store.state.newsConfig;
-            }
         }
     };
 </script>
