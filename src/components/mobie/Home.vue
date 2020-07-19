@@ -49,13 +49,13 @@
         },
         computed: {
             one() {
-                return this.$store.state.one;
+                return this.$store.state.apiData.one;
             },
             bing() {
-                return this.$store.state.bing;
+                return this.$store.state.apiData.bing;
             },
             today() {
-                return this.$store.state.today;
+                return this.$store.state.apiData.today;
             },
             helloWord() {
                 let hour = parseInt(utils.time(new Date(), "HH"));
@@ -81,13 +81,13 @@
         },
         beforeCreate() {
             if (!this.one) {
-                this.$store.dispatch("GetOne");
+                this.$store.dispatch("GetApi", "one");
             }
             if (!this.bing) {
-                this.$store.dispatch("GetBing");
+                this.$store.dispatch("GetApi", "bing");
             }
             if (!this.today) {
-                this.$store.dispatch("GetToday");
+                this.$store.dispatch("GetApi", "today");
             }
         }
 

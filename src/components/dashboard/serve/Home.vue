@@ -27,8 +27,8 @@
         },
         methods: {
             load() {
-                this.blankText = "";
-                this.$store.dispatch("GetServerNetwork").then(() => {
+                this.blankText = "加载中...";
+                this.$store.dispatch("GetApi", "serverNetwork").then(() => {
                     this.$refs.serverReload.onTopLoaded();
                 }).catch(err => {
                     this.blankText = "加载失败，下拉刷新";

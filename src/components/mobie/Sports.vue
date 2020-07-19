@@ -1,8 +1,8 @@
 <template>
     <div id="m-sports">
         <div class="container">
-            <ul>
-                <li v-for="(list,key) in data" :key="key" v-cloak>
+            <ul v-if="data">
+                <li v-for="(list,key) in data.list" :key="key" v-cloak>
                     <div class="date" :class="{active:today==key}" :ref="key">{{key | date}}</div>
                     <ul>
                         <li v-for="(item,index) in list" :key="index" v-cloak>
@@ -28,7 +28,8 @@
         },
         computed: {
             data() {
-                return this.$store.state.soccerList.list;
+                console.log(this.$store.state.apiData.soccerList);
+                return this.$store.state.apiData.soccerList;
             }
         },
         data() {
@@ -54,7 +55,13 @@
         methods: {},
         created() {
             if (!this.data) {
-                this.$store.dispatch("GetSoccerList").catch(err => {
+                let api = {
+                    name: "soccerList",
+                    data: {
+                        start: utils.time(new Date(), "yyyy-MM-dd 00:00:00next")
+                    }
+                }
+                this.$store.dispatch("GetApi", api).catch(err => {
                     this.blankText = "加载错误";
                 });
             }

@@ -1,7 +1,6 @@
 <!-- 快讯 -->
 <template>
-    <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" ref="newsReload"
-        id="news-flash">
+    <mt-loadmore :top-method="load" ref="newsReload" id="news-flash">
         <div class="container" v-if="data">
             <div class="date">{{data.date}}</div>
             <div class="list">
@@ -37,18 +36,18 @@
         },
         data() {
             return {
-                allLoaded: false,
                 blankText: "正在加载..."
             }
         },
         computed: {
             data() {
-                return this.$store.state.newsFlash
+                return this.$store.state.apiData.newsFlash
             }
         },
         methods: {
-            loadTop() {
-                this.$store.dispatch("GetNewsFlash").then(() => {
+            load() {
+                this.blankText = "加载中...";
+                this.$store.dispatch("GetApi", "newsFlash").then(() => {
                     Toast({
                         message: '刷新成功',
                         iconClass: 'icon icon-success'
@@ -59,16 +58,11 @@
                     this.$refs.newsReload.onTopLoaded();
                 });
 
-            },
-            loadBottom() {
-                //this.$refs.newsReload.onBottomLoaded();
             }
         },
         beforeMount() {
             if (!this.data) {
-                this.$store.dispatch("GetNewsFlash").catch(err => {
-                    this.blankText = err.error;
-                });
+                this.load();
             }
 
         }
