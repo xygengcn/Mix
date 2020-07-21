@@ -1,34 +1,28 @@
 import axios from "axios";
 import utils from "@/utils/utils.js"
 var http = {
-    host: "https://api.xygeng.cn",
-    api: {
-        "one": "/one",
-        "bing": "/bing/url",
-        "today": "/day",
-        "newsFlash": "/news",
-        "serverNetwork": "/bt/GetNetWork",
-        "login": "/user/login",
-        "soccerList": "/sports/soccer",
-        "apiTotal": "/api/total",
-        "weiboHots": "/weibo/hots"
-    },
+    PRO_HOST: "https://api.xygeng.cn",
+    DEV_HOST: "http://api.cn",
+    api: require("./api.json"),
     headers: {
         "token": utils.getCookie("token")
     }
 }
-axios.defaults.baseURL = http.host;
+if (process.env.NODE_ENV === "development") {
+    axios.defaults.baseURL = http.DEV_HOST;
+} else {
+    axios.defaults.baseURL = http.PRO_HOST;
+}
 http.get = function (api, data) {
     return new Promise((resolve, reject) => {
         axios.get(this.api[api], {
-                headers: http.headers,
-                params: data
-            }).then(function (res) {
-                resolve(res.data);
-            })
-            .catch(err => {
-                reject(err)
-            });
+            headers: http.headers,
+            params: data
+        }).then(function (res) {
+            resolve(res.data);
+        }).catch(err => {
+            reject(err)
+        });
     })
 }
 http.post = function (api, data) {
@@ -41,13 +35,13 @@ http.post = function (api, data) {
         }
     };
     return new Promise((resolve, reject) => {
-        axios.post(this.api[api], postData, http.headers, ).then(function (res) {
-                if (res.status == 200) {
-                    resolve(res.data)
-                } else {
-                    reject(res)
-                }
-            })
+        axios.post(this.api[api], postData, http.headers,).then(function (res) {
+            if (res.status == 200) {
+                resolve(res.data)
+            } else {
+                reject(res)
+            }
+        })
             .catch(err => {
                 console.log(err.error);
                 reject(err)

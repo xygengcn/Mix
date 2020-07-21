@@ -1,0 +1,11 @@
+{
+    "one": "/one",
+    "bing": "/bing/url",
+    "today": "/day",
+    "newsFlash": "/news",
+    "serverNetwork": "/bt/GetNetWork",
+    "login": "/user/login",
+    "soccerList": "/sports/soccer",
+    "apiTotal": "/api/total",
+    "weiboHots": "/weibo/hots"
+}

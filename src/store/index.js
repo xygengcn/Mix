@@ -16,9 +16,6 @@ Vue.use(Vuex)
 
 // var newsFlash = require("./data/newsFlash.json");
 
-// var newsConfig = {
-//   type: "flash"
-// }
 var user = {
   username: utils.getCookie("username"),
   email: utils.getCookie("email"),
