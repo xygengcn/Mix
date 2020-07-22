@@ -4,45 +4,48 @@ import utils from "@/utils/utils.js";
 Vue.use(VueRouter)
 
 const routes = [{
+  path: '/',
+  component: () => import('../views/pc/App.vue'),
+  children: [{
     path: '/',
-    component: () => import('../views/pc/App.vue'),
-    children: [{
-      path: '/',
-      component: () => import('@/components/pc/Home.vue')
-    }, {
-      path: 'setting',
-      component: () => import('@/components/pc/Setting.vue')
-    }, {
-      path: 'news',
-      component: () => import('@/components/pc/News.vue')
-    }, {
-      path: 'sports',
-      component: () => import('@/components/pc/Sports.vue')
-    }]
-  },
-  {
-    path: '/m',
-    component: () => import('../views/mobie/App.vue'),
-    children: [{
-      path: '/',
-      component: () => import('@/components/mobie/Home')
-    }, {
-      path: 'sports',
-      component: () => import('@/components/mobie/Sports'),
-    }, {
-      path: 'dashboard',
-      component: () => import('@/components/mobie/Dashboard'),
-    }, {
-      path: 'setting',
-      component: () => import('@/components/mobie/Setting'),
-    }, {
-      path: 'news',
-      component: () => import('@/components/mobie/News'),
-    }]
+    component: () => import('@/components/pc/Home.vue')
   }, {
-    path: '/login',
-    component: () => import('../views/Login.vue')
-  }
+    path: 'setting',
+    component: () => import('@/components/pc/Setting.vue')
+  }, {
+    path: 'news',
+    component: () => import('@/components/pc/News.vue')
+  }, {
+    path: 'sports',
+    component: () => import('@/components/pc/Sports.vue')
+  }]
+},
+{
+  path: '/m',
+  component: () => import('../views/mobie/App.vue'),
+  children: [{
+    path: '/',
+    component: () => import('@/components/mobie/Home')
+  }, {
+    path: 'sports',
+    component: () => import('@/components/mobie/Sports'),
+  }, {
+    path: 'dashboard',
+    component: () => import('@/components/mobie/Dashboard'),
+  }, {
+    path: 'setting',
+    component: () => import('@/components/mobie/Setting'),
+  }, {
+    path: 'news',
+    component: () => import('@/components/mobie/News'),
+  }, {
+    path: 'verify',
+    component: () => import('@/components/verify/Home'),
+  }]
+}, {
+  path: '/login',
+  component: () => import('../views/Login.vue')
+}
 ]
 
 const router = new VueRouter({

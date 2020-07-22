@@ -1,7 +1,6 @@
 <template>
     <div id="m-home">
-        <mt-header :title="title">
-        </mt-header>
+        <mt-header :title="title"></mt-header>
         <div class="m-container">
             <router-view></router-view>
         </div>
@@ -26,78 +25,75 @@
 </template>
 
 <script>
-    export default {
-        data() {
-            let active = this.$route.path;
-            return {
-                active: active
-            }
-        },
-        watch: {
-            active(val) {
-                this.$router.push(val);
-            }
-
-        },
-        computed: {
-            title() {
-                let title = {
-                    "/m": "首页",
-                    "/m/sports": "球赛",
-                    "/m/setting": "设置",
-                    "/m/news": "快讯",
-                    "/m/dashboard": "监控",
-                }
-                return title[this.active];
-            }
+export default {
+    data() {
+        let active = this.$route.path;
+        return {
+            active: active
+        };
+    },
+    watch: {
+        active(val) {
+            this.$router.push(val);
         }
-
+    },
+    computed: {
+        title() {
+            let title = {
+                "/m": "首页",
+                "/m/sports": "球赛",
+                "/m/setting": "设置",
+                "/m/news": "快讯",
+                "/m/dashboard": "监控"
+            };
+            return title[this.active];
+        }
     }
+};
 </script>
 
 <style scoped>
-    #m-home {
-        height: 100%;
-        position: relative;
-        overflow: hidden;
-    }
+#m-home {
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
 
-    .m-container {
-        height: 100%;
-        box-sizing: border-box;
-        overflow: auto;
-        padding-bottom: 115px;
-        background-color: #f9f8f8;
-    }
+.m-container {
+    height: 100%;
+    box-sizing: border-box;
+    overflow: auto;
+    padding-bottom: 115px;
+    background-color: #f8f8f8;
+}
 
+.mint-header {
+    color: #ffffff;
+    background-color: #20a53a;
+}
 
-    .mint-header {
-        color: #ffffff;
-        background-color: #20a53a;
-    }
+.toolbar a {
+    padding: 10px 0px;
+}
 
-    .toolbar a {
-        padding: 10px 0px;
-    }
+.toolbar {
+    border-top: 1px #eeeeee solid;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    padding: 5px 0px 8px;
+}
 
-    .toolbar {
-        border-top: 1px #eeeeee solid;
-        background-color: #f8f8f8;
-        box-sizing: border-box;
-        padding: 5px 0px 8px;
-    }
+.toolbar .mint-tab-item-icon i {
+    font-size: 1.5em;
+}
 
-    .toolbar .mint-tab-item-icon i {
-        font-size: 1.5em;
-    }
-
-    .toolbar .mint-tab-item.is-selected {
-        background-color: #f8f8f8;
-        color: #20a53a;
-    }
+.toolbar .mint-tab-item.is-selected {
+    background-color: #f8f8f8;
+    color: #20a53a;
+}
 </style>
 <style>
-    ::-webkit-scrollbar {
-        display: none
-    }
+::-webkit-scrollbar {
+    display: none;
+}
 </style>

@@ -13,6 +13,7 @@ if (process.env.NODE_ENV === "development") {
 } else {
     axios.defaults.baseURL = http.PRO_HOST;
 }
+axios.defaults.withCredentials = true;
 http.get = function (api, data) {
     return new Promise((resolve, reject) => {
         axios.get(this.api[api], {
