@@ -19,6 +19,7 @@ Vue.use(Vuex)
 var user = {
   username: utils.getCookie("username"),
   email: utils.getCookie("email"),
+  token: utils.getCookie("token")
 }
 
 var system = {

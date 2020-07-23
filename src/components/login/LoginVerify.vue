@@ -51,7 +51,9 @@
 </template>
 
 <script>
+import { Toast } from "mint-ui";
 import http from "@/http/index.js";
+import utils from "@/utils/utils.js";
 export default {
     props: ["email"],
     data() {
@@ -71,7 +73,29 @@ export default {
             http.post("login", { email: this.email, code: this.code.join("") })
                 .then(res => {
                     if (res.code == 200) {
-                        console.log(res.data);
+                        Toast({
+                            message: "登录成功",
+                            position: "bottom",
+                            duration: 1000
+                        });
+                        let user = {
+                            username: res.data.username,
+                            email: this.email,
+                            token: res.data.token
+                        };
+                        this.$store.commit("SetUser", user);
+                        utils.setCookie(
+                            "token",
+                            res.data.token,
+                            res.data.expire
+                        );
+                        utils.setCookie(
+                            "username",
+                            res.data.username,
+                            res.data.expire
+                        );
+                        utils.setCookie("email", this.email, res.data.expire);
+                        this.$router.push("/");
                     } else {
                         this.$message({
                             message: res.error,

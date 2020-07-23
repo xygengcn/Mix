@@ -61,7 +61,19 @@ router.beforeEach((to, from, next) => {
         path: from.fullPath
       })
     } else {
-      next();
+      if (utils.os().isMobie) {
+        if (to.path == "/m" || to.path == "/m/" || to.path.indexOf("/m/") != -1) {
+          next();
+        } else {
+          next({ path: '/m' + to.fullPath });
+        }
+      } else {
+        if (to.path != "/m" && to.path.indexOf("/m/") == -1) {
+          next();
+        } else {
+          next({ path: to.fullPath.slice(2) });
+        }
+      }
     }
   } else {
     if (to.path == '/login') {

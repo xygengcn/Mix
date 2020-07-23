@@ -36,7 +36,7 @@ http.post = function (api, data) {
         }
     };
     return new Promise((resolve, reject) => {
-        axios.post(this.api[api], postData, http.headers,).then(function (res) {
+        axios.post(this.api[api], postData, { headers: http.headers }).then(function (res) {
             if (res.status == 200) {
                 resolve(res.data)
             } else {
