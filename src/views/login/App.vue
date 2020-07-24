@@ -19,15 +19,15 @@ import pcForm from "@/components/login/PC";
 export default {
     components: {
         pcForm,
-        mForm
+        mForm,
     },
     data() {
         let os = utils.os();
         return {
-            isMobie: os.isMobie
+            isMobie: os.isMobie,
         };
     },
-    methods: {}
+    methods: {},
 };
 </script>
 

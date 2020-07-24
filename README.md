@@ -1,19 +1,14 @@
-# mix
+# mix助手
 
-## Project setup
-```
-yarn install
-```
+集成新闻、体育、监控为一体的助手
 
-### Compiles and hot-reloads for development
+### 启动
 ```
-yarn serve
+npm install
 ```
 
-### Compiles and minifies for production
-```
-yarn build
-```
+### 更新
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+#### 版本0.1.5
+
++ 增加PC端与移动端的安全码登录

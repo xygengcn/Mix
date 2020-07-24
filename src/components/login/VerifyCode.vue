@@ -51,14 +51,11 @@
 </template>
 
 <script>
-import { Toast } from "mint-ui";
-import http from "@/http/index.js";
-import utils from "@/utils/utils.js";
 export default {
     props: ["email"],
     data() {
         return {
-            code: ["", "", "", ""]
+            code: ["", "", "", ""],
         };
     },
     watch: {
@@ -66,49 +63,11 @@ export default {
             if (val[0] && val[1] && val[3] && val[2]) {
                 this.verify();
             }
-        }
+        },
     },
     methods: {
         verify() {
-            http.post("login", { email: this.email, code: this.code.join("") })
-                .then(res => {
-                    if (res.code == 200) {
-                        Toast({
-                            message: "登录成功",
-                            position: "bottom",
-                            duration: 1000
-                        });
-                        let user = {
-                            username: res.data.username,
-                            email: this.email,
-                            token: res.data.token
-                        };
-                        this.$store.commit("SetUser", user);
-                        utils.setCookie(
-                            "token",
-                            res.data.token,
-                            res.data.expire
-                        );
-                        utils.setCookie(
-                            "username",
-                            res.data.username,
-                            res.data.expire
-                        );
-                        utils.setCookie("email", this.email, res.data.expire);
-                        this.$router.push("/");
-                    } else {
-                        this.$message({
-                            message: res.error,
-                            type: "warning"
-                        });
-                    }
-                })
-                .catch(err => {
-                    this.$message({
-                        message: "连接错误",
-                        type: "warning"
-                    });
-                });
+            this.$emit("login", this.code.join(""));
         },
         inputSet(e, ref) {
             if (!isNaN(e.key)) this.$refs["input-" + ref].focus();
@@ -123,11 +82,11 @@ export default {
         },
         back() {
             this.$emit("back");
-        }
+        },
     },
     mounted() {
         this.$refs["input-0"].focus();
-    }
+    },
 };
 </script>
 

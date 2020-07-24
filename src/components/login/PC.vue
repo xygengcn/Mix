@@ -11,27 +11,28 @@
                 <el-button type="success" style="width: 100%;" @click="verify">GO</el-button>
             </el-form-item>
         </el-form>
-        <verify v-if="isEmail" @back="back" :email="user.email" />
+        <verify v-if="isEmail" @back="back" @login="login" />
     </div>
 </template>
 
 <script>
-import verify from "@/components/login/LoginVerify";
+import verify from "@/components/login/VerifyCode";
+import login from "./login";
 export default {
     components: {
-        verify
+        verify,
     },
     data() {
         return {
             user: {
-                email: ""
+                email: "",
             },
-            isEmail: false
+            isEmail: false,
         };
     },
     methods: {
         verify() {
-            this.$refs["form"].validate(valid => {
+            this.$refs["form"].validate((valid) => {
                 if (valid) {
                     this.isEmail = true;
                 } else {
@@ -41,8 +42,17 @@ export default {
         },
         back() {
             this.isEmail = !this.isEmail;
-        }
-    }
+        },
+        login(code) {
+            login(
+                {
+                    email: this.user.email,
+                    code,
+                },
+                "/"
+            );
+        },
+    },
 };
 </script>
 
